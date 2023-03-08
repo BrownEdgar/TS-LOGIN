@@ -1,0 +1,14 @@
+.container{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    }
+
+h1 {
+    font-size: 72px;
+    background: -webkit-linear-gradient(#810f0f, #ce5757);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
