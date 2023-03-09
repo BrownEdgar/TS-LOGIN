@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import Button from './UI/Button'
 
@@ -18,14 +19,19 @@ export default function App() {
 
 	const registerUser = (e: React.FormEvent<HTMLFormElement>): void => {
 		e.preventDefault()
-	
+
 		const email = (e.target as any).email.value
 		const password = (e.target as any).password.value
 		const data = {
 			email,
-			password
+			password,
+			returnSecureToken:true
 		}
-		console.log(data)
+		axios({
+			method: "POST",
+			url: `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
+			data
+		})
 	}
 
 	return (

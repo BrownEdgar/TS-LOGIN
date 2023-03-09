@@ -20,7 +20,10 @@
 	background-color: #f8fbe9;
 	color: #111;
 }
-
+.btn-sm {
+	font-size: 14px;
+	padding: 0.6rem;
+}
 .btn-md {
 	font-size: 18px;
 	padding: 1rem;
