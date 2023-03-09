@@ -17,6 +17,7 @@ export default function Button(props: IButtonProps) {
 		<button 
 			className={`btn ${props.classes} btn-${props.variant} btn-${props.size}`}
 			type={props.type}
+			onClick={props.onclick}
 		>{props.title}</button>
 	)
 }

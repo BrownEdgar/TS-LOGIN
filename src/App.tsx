@@ -1,10 +1,10 @@
-import axios from 'axios'
 import React, { useState } from 'react'
 import Button from './UI/Button'
+import axios from 'axios'
 
 
 const API_KEY = process.env.REACT_APP_API_KEY
-console.log(API_KEY)
+
 interface IUser {
 	email: string,
 	password: string
@@ -27,15 +27,33 @@ export default function App() {
 			password,
 			returnSecureToken:true
 		}
+		setUser({ email, password })
+
 		axios({
 			method: "POST",
 			url: `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
 			data
 		})
+		.then(response => console.log(response))
+		.catch(err => console.log(err))
+	}
+
+	const loginhandler = ():void => { 
+		const data  = {
+			...user,
+			returnSecureToken: true
+		}
+		axios({
+			method: "POST",
+			url: `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
+			data
+		})
+			.then(response => console.log(response))
+			.catch(err => console.log(err))
 	}
 
 	return (
-		<div>
+		<div>	
 			<form onSubmit={registerUser}>
 				<div>
 					<label htmlFor="email">Email</label>
@@ -51,6 +69,7 @@ export default function App() {
 					type='button'
 					size='md'
 					classes='aaaa'
+					onclick={loginhandler}
 				/>
 				<Button
 					title='register'
